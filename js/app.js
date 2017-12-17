@@ -41,7 +41,7 @@ var Player = function() {
   this.score = 0;
   this.mobile = true;
   this.won = false;
-}
+};
 
 /*  Move the player while making sure the player cannot move outside of the
 *  screen bounds by checking wether the requested move (either left, right,
@@ -73,20 +73,20 @@ Player.prototype.handleInput = function(dir){
   if(this.mobile){
     switch (dir) {
       case 'left':
-      this.update([-101, 0]);
-      break;
+        this.update([-101, 0]);
+        break;
       case 'up':
-      this.update([0, -83]);
-      break;
+        this.update([0, -83]);
+        break;
       case 'right':
-      this.update([101, 0]);
-      break;
+        this.update([101, 0]);
+        break;
       case 'down':
-      this.update([0, 83]);
-      break;
+        this.update([0, 83]);
+        break;
       default:
-      this.update([0, 0]);
-      break;
+        this.update([0, 0]);
+        break;
     }
   }
 };
@@ -96,7 +96,7 @@ Player.prototype.wins = function() {
   *  show a screen over the game declaring the player has won.
   */
   this.won = true;
-}
+};
 Player.prototype.loses = function() {
   // Change the player's image/sprite so he appears dead.
   this.sprite = 'images/char-boy-dead.png';
@@ -113,7 +113,7 @@ Player.prototype.loses = function() {
   window.setTimeout(function() {
     resetGame();
   }, 1600);
-}
+};
 
 /* Instantiate objects.
 * Place all enemy objects in an array called allEnemies
