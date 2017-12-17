@@ -1,5 +1,8 @@
 const randomStartPos = () => (Math.random().toFixed(1) * -1010) - 101;
 const randomSpeed = () => (Math.random().toFixed(1) * 100) + 60;
+var TILE_WIDTH = 101,
+    TILE_HEIGHT = 83,
+    START_Y = 65;
 
 // Enemy class
 var Enemy = function([x = -1, y = 1, s = 1] = []) {
@@ -36,8 +39,8 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and a handleInput() method.
 var Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.x = 202;
-  this.y = 397;
+  this.x = TILE_WIDTH * 2;
+  this.y = (TILE_HEIGHT * 5)-18;
   this.score = 0;
   this.mobile = true;
   this.won = false;
@@ -73,16 +76,16 @@ Player.prototype.handleInput = function(dir){
   if(this.mobile){
     switch (dir) {
       case 'left':
-        this.update([-101, 0]);
+        this.update([-TILE_WIDTH, 0]);
         break;
       case 'up':
-        this.update([0, -83]);
+        this.update([0, -TILE_HEIGHT]);
         break;
       case 'right':
-        this.update([101, 0]);
+        this.update([TILE_WIDTH, 0]);
         break;
       case 'down':
-        this.update([0, 83]);
+        this.update([0, TILE_HEIGHT]);
         break;
       default:
         this.update([0, 0]);
@@ -125,15 +128,15 @@ var speeds = [
   randomSpeed()
 ],
 allEnemies = [
-  new Enemy([randomStartPos(), 65, speeds[0]]),
-  new Enemy([randomStartPos(), 65, speeds[0]]),
-  new Enemy([randomStartPos(), 65, speeds[0]]),
-  new Enemy([randomStartPos(), 148, speeds[1]]),
-  new Enemy([randomStartPos(), 148, speeds[1]]),
-  new Enemy([randomStartPos(), 148, speeds[1]]),
-  new Enemy([randomStartPos(), 314, speeds[2]]),
-  new Enemy([randomStartPos(), 314, speeds[2]]),
-  new Enemy([randomStartPos(), 314, speeds[2]])
+  new Enemy([randomStartPos(), START_Y, speeds[0]]),
+  new Enemy([randomStartPos(), START_Y, speeds[0]]),
+  new Enemy([randomStartPos(), START_Y, speeds[0]]),
+  new Enemy([randomStartPos(), START_Y + TILE_HEIGHT, speeds[1]]),
+  new Enemy([randomStartPos(), START_Y + TILE_HEIGHT, speeds[1]]),
+  new Enemy([randomStartPos(), START_Y + TILE_HEIGHT, speeds[1]]),
+  new Enemy([randomStartPos(), START_Y + (TILE_HEIGHT * 3), speeds[2]]),
+  new Enemy([randomStartPos(), START_Y + (TILE_HEIGHT * 3), speeds[2]]),
+  new Enemy([randomStartPos(), START_Y + (TILE_HEIGHT * 3), speeds[2]])
 ],
 player = new Player();
 
