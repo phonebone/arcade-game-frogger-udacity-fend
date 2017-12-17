@@ -59,7 +59,7 @@ Player.prototype.update = function(dir = [0,0]){
     if(newY > -19 && newY < 398) this.y = newY;
   } else {
     // If the player has reached the top row, the player has won
-    player.wins();
+    this.wins();
   }
 };
 Player.prototype.render = function(){
